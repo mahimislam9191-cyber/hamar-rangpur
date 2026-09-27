@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>হামার রংপুর</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Noto Sans Bengali", Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f5f4;
+            color: #222;
+        }
+
+        header {
+            background: linear-gradient(135deg, #006a4e, #00966e);
+            color: white;
+            text-align: center;
+            padding: 28px 15px;
+            border-radius: 0 0 25px 25px;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .container {
+            width: 94%;
+            max-width: 650px;
+            margin: 20px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-radius: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            color: #006a4e;
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        .card p {
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 12px;
+            text-decoration: none;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .green {
+            background: #008f63;
+        }
+
+        .red {
+            background: #d62828;
+        }
+
+        .blue {
+            background: #1769aa;
+        }
+
+        .orange {
+            background: #ef8b00;
+        }
+
+        .purple {
+            background: #7048a8;
+        }
+
+        select, textarea, input {
+            width: 100%;
+            padding: 13px;
+            margin-top: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .number {
+            background: #f5f5f5;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 10px;
+        }
+
+        .number strong {
+            color: #006a4e;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 10px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .logo {
+            font-size: 50px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">🏠</div>
+
+    <h1>হামার রংপুর</h1>
+
+    <p>রংপুরের মানুষের জন্য জরুরি ও জনসেবা অ্যাপ</p>
+
+    <p style="margin-top:10px;">
+        Create by Musfiqur R. Mahim
+    </p>
+
+</header>
+
+
+<div class="container">
+
+    <!-- Emergency -->
+    <div class="card">
+
+        <h2>🚨 জরুরি পুলিশ সহায়তা</h2>
+
+        <p>
+            যেকোনো জরুরি পরিস্থিতিতে বাংলাদেশ জাতীয় জরুরি সেবা
+            <b>৯৯৯</b>-এ যোগাযোগ করুন।
+        </p>
+
+        <a class="btn red" href="tel:999">
+            📞 ৯৯৯ — জরুরি পুলিশ সহায়তা
+        </a>
+
+        <div class="number">
+            <strong>রংপুর জেলা পুলিশ সুপার</strong><br>
+            01320-131300
+        </div>
+
+        <a class="btn green" href="tel:01320131300">
+            📞 রংপুর জেলা পুলিশ
+        </a>
+
+    </div>
+
+
+    <!-- Upazila Police -->
+    <div class="card">
+
+        <h2>👮 উপজেলা পুলিশ সহায়তা</h2>
+
+        <p>
+            আপনার উপজেলা নির্বাচন করে জরুরি পুলিশ সহায়তার জন্য
+            ৯৯৯-এ কল করুন।
+        </p>
+
+        <select id="upazila">
+
+            <option value="">-- উপজেলা নির্বাচন করুন --</option>
+
+            <option>রংপুর সদর</option>
+
+            <option>গংগাচড়া</option>
+
+            <option>তারাগঞ্জ</option>
+
+            <option>বদরগঞ্জ</option>
+
+            <option>মিঠাপুকুর</option>
+
+            <option>পীরগঞ্জ</option>
+
+            <option>পীরগাছা</option>
+
+            <option>কাউনিয়া</option>
+
+        </select>
+
+        <button class="btn green" onclick="policeHelp()">
+            📞 পুলিশ সহায়তা
+        </button>
+
+        <p id="policeResult"
+           style="margin-top:12px;text-align:center;font-weight:bold;">
+        </p>
+
+    </div>
+
+
+    <!-- Extortion -->
+    <div class="card">
+
+        <h2>⚠️ চাঁদাবাজির অভিযোগ</h2>
+
+        <p>
+            চাঁদাবাজি বা জোরপূর্বক টাকা দাবি করার ঘটনা সম্পর্কে
+            জরুরি অভিযোগের জন্য ৯৯৯-এ যোগাযোগ করুন।
+        </p>
+
+        <select id="complaintUpazila">
+
+            <option value="">-- উপজেলা নির্বাচন করুন --</option>
+
+            <option>রংপুর সদর — কোতোয়ালী থানা</option>
+
+            <option>গংগাচড়া — গংগাচড়া থানা</option>
+
+            <option>তারাগঞ্জ — তারাগঞ্জ থানা</option>
+
+            <option>বদরগঞ্জ — বদরগঞ্জ থানা</option>
+
+            <option>মিঠাপুকুর — মিঠাপুকুর থানা</option>
+
+            <option>পীরগঞ্জ — পীরগঞ্জ থানা</option>
+
+            <option>পীরগাছা — পীরগাছা থানা</option>
+
+            <option>কাউনিয়া — কাউনিয়া থানা</option>
+
+        </select>
+
+        <textarea
+            id="complaint"
+            placeholder="ঘটনার সংক্ষিপ্ত বিবরণ লিখুন...">
+        </textarea>
+
+        <button class="btn red" onclick="submitComplaint()">
+            🚨 জরুরি অভিযোগ সহায়তা
+        </button>
+
+        <p id="complaintResult"
+           style="margin-top:12px;text-align:center;">
+        </p>
+
+    </div>
+
+
+    <!-- Ambulance -->
+    <div class="card">
+
+        <h2>🚑 অ্যাম্বুলেন্স ও জরুরি সেবা</h2>
+
+        <p>
+            জরুরি অ্যাম্বুলেন্স, পুলিশ, ফায়ার সার্ভিসসহ
+            প্রয়োজনীয় জরুরি সহায়তার জন্য ৯৯৯।
+        </p>
+
+        <a class="btn red" href="tel:999">
+            📞 ৯৯৯ — জরুরি সহায়তা
+        </a>
+
+    </div>
+
+
+    <!-- Child Marriage -->
+    <div class="card">
+
+        <h2>👧 বাল্যবিবাহ বন্ধ করুন</h2>
+
+        <p>
+            কোথাও বাল্যবিবাহ হতে যাচ্ছে জানতে পারলে দ্রুত
+            সংশ্লিষ্ট সরকারি হেল্পলাইনে যোগাযোগ করুন।
+        </p>
+
+        <a class="btn purple" href="tel:109">
+            📞 ১০৯ — নারী ও শিশু সহায়তা
+        </a>
+
+        <a class="btn orange" href="tel:1098">
+            📞 ১০৯৮ — শিশু সহায়তা
+        </a>
+
+        <a class="btn red" href="tel:999">
+            📞 ৯৯৯ — জরুরি পরিস্থিতি
+        </a>
+
+    </div>
+
+
+    <!-- RASS Blood -->
+    <div class="card">
+
+        <h2>🩸 জরুরি রক্ত সহায়তা</h2>
+
+        <p>
+            জরুরি রক্তের প্রয়োজন হলে যোগাযোগ করুন:
+        </p>
+
+        <div class="number">
+            <strong>রংপুর একতাবদ্ধ স্বেচ্ছাসেবী সংগঠন (RASS)</strong>
+        </div>
+
+        <div class="number">
+            মেহেদী হাসান মুন্না<br>
+            📞 +8801339784272
+        </div>
+
+        <a class="btn blue" href="tel:+8801339784272">
+            📞 মেহেদী হাসান মুন্না
+        </a>
+
+
+        <div class="number">
+            রঞ্জু<br>
+            📞 +8801810191341
+        </div>
+
+        <a class="btn blue" href="tel:+8801810191341">
+            📞 রঞ্জু
+        </a>
+
+
+        <div class="number">
+            মাহমুদুল হাসান<br>
+            📞 01610091075
+        </div>
+
+        <a class="btn blue" href="tel:01610091075">
+            📞 মাহমুদুল হাসান
+        </a>
+
+
+        <div class="number">
+            মুশফিকুর রহমান মাহিম<br>
+            📞 01788149200
+        </div>
+
+        <a class="btn blue" href="tel:01788149200">
+            📞 মুশফিকুর রহমান মাহিম
+        </a>
+
+    </div>
+
+
+    <!-- All Upazila -->
+    <div class="card">
+
+        <h2>📍 রংপুর জেলার উপজেলা</h2>
+
+        <p>১. রংপুর সদর</p>
+        <p>২. গংগাচড়া</p>
+        <p>৩. তারাগঞ্জ</p>
+        <p>৪. বদরগঞ্জ</p>
+        <p>৫. মিঠাপুকুর</p>
+        <p>৬. পীরগঞ্জ</p>
+        <p>৭. পীরগাছা</p>
+        <p>৮. কাউনিয়া</p>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <p>হামার রংপুর</p>
+
+    <p>
+        মানুষের পাশে, রংপুরের পাশে ❤️
+    </p>
+
+    <p style="margin-top:8px;">
+        Create by Musfiqur R. Mahim
+    </p>
+
+</footer>
+
+
+<script>
+
+function policeHelp() {
+
+    let area = document.getElementById("upazila").value;
+
+    let result = document.getElementById("policeResult");
+
+    if (area === "") {
+
+        result.innerHTML =
+        "⚠️ আগে আপনার উপজেলা নির্বাচন করুন।";
+
+        return;
+    }
+
+    result.innerHTML =
+    "আপনার নির্বাচিত এলাকা: " + area +
+    "<br>জরুরি পুলিশ সহায়তার জন্য ৯৯৯-এ কল করুন।";
+
+}
+
+
+function submitComplaint() {
+
+    let area =
+    document.getElementById("complaintUpazila").value;
+
+    let complaint =
+    document.getElementById("complaint").value;
+
+    let result =
+    document.getElementById("complaintResult");
+
+
+    if (area === "") {
+
+        result.innerHTML =
+        "⚠️ আগে উপজেলা/থানা নির্বাচন করুন।";
+
+        return;
+    }
+
+
+    if (complaint.trim() === "") {
+
+        result.innerHTML =
+        "⚠️ অভিযোগের সংক্ষিপ্ত বিবরণ লিখুন।";
+
+        return;
+    }
+
+
+    result.innerHTML =
+    "✅ অভিযোগের তথ্য প্রস্তুত হয়েছে।<br>" +
+    "জরুরি সহায়তার জন্য ৯৯৯-এ কল করুন।";
+
+}
+
+
+</script>
+
+</body>
+</html>
